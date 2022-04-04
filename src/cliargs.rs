@@ -17,7 +17,7 @@ use std::error::Error;
 #[derive(Parser, Debug)]
 #[clap(version)] 
 pub struct CliArgs {
-    /// Http methods to use: GET, POST, PUT, DELETE, HEAD, OPTIONS
+    /// Http method to use 
     #[clap(short='X', long)]
     #[clap(arg_enum)]
     pub method: Option<Method>,
@@ -26,6 +26,9 @@ pub struct CliArgs {
     #[clap(short='o', long, value_name="filename")]
     pub out: Option<PathBuf>, 
 
+    /// Download the file at <URL>
+    /// use -o option to select the filename
+    /// or the filename is inferred from the url
     #[clap(long)]
     pub download: bool,
 
@@ -49,7 +52,7 @@ pub struct CliArgs {
     #[clap(short='b', long)]
     pub cookies: Option<Vec<String>>,
 
-    /// list of urls to hit seperated by ','
+    /// Url to send the request to
     pub url: Url
 }
 
